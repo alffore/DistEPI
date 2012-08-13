@@ -11,10 +11,12 @@ PPunto creaPunto(double lat, double lon, int id, int anno);
 
 void insertaPunto(PPunto pori, PPunto pai);
 
+void liberaMemoria(PPunto p);
+
 int eliminaPunto(PPunto p);
 
 extern int anno_min;
-extern int cantob;
+int cantob;
 
 PPunto recuperaDatos(char * snomarch) {
 
@@ -22,28 +24,30 @@ PPunto recuperaDatos(char * snomarch) {
     char c;
 
     PPunto proot = NULL;
-    PPunto paux=NULL,pact=NULL;
+    PPunto paux = NULL, pact = NULL;
+
+    cantob = 0;
 
 
     fp = fopen(snomarch, "r");
 
     if (fp != NULL) {
-        char line [ 128 ]; 
-        while (fgets(line, sizeof line, fp) != NULL)  {
-            if(proot!=NULL){
-                
-                
-                paux=parserLine(line);
-                if(pact!=NULL){
-                    
+        char line [ 128 ];
+        while (fgets(line, sizeof line, fp) != NULL) {
+            if (proot != NULL) {
+
+
+                paux = parserLine(line);
+                if (pact != NULL) {
+
                 }
-                printf("%f::%f::%d::%i\n",paux->lat,paux->lon,paux->id,paux->anno);
-            }else{
-                proot=parserLine(line);
-                pact=proot;
-                printf("%f::%f::%d::%i\n",proot->lat,proot->lon,proot->id,proot->anno);
+                printf("%f::%f::%d::%i\n", paux->lat, paux->lon, paux->id, paux->anno);
+            } else {
+                proot = parserLine(line);
+                pact = proot;
+                printf("%f::%f::%d::%i\n", proot->lat, proot->lon, proot->id, proot->anno);
             }
-             
+
         }
         fclose(fp);
     }
@@ -54,18 +58,18 @@ PPunto recuperaDatos(char * snomarch) {
 }
 
 PPunto parserLine(char * slinea) {
-    
-    int  campo=0;
+
+    int campo = 0;
     double latlon_m[4];
-    
+
     char* token = strtok(slinea, DELIM);
     while (token) {
-        latlon_m[campo]=atof(token);
+        latlon_m[campo] = atof(token);
         token = strtok(NULL, DELIM);
         campo++;
     }
-    
-    return creaPunto(latlon_m[0],latlon_m[1],(int)latlon_m[2],(int)latlon_m[3]);
+
+    return creaPunto(latlon_m[0], latlon_m[1], (int) latlon_m[2], (int) latlon_m[3]);
 }
 
 PPunto creaPunto(double lat, double lon, int anno, int id) {
@@ -78,7 +82,7 @@ PPunto creaPunto(double lat, double lon, int anno, int id) {
     p->lon = lon * M_PI / 180.0;
 
     p->pp = NULL;
-
+    cantob++;
     return p;
 }
 
@@ -86,6 +90,23 @@ void insertaPunto(PPunto pori, PPunto pai) {
 
     pori->pp = pai;
 
+}
+
+void liberaMemoria(PPunto p){
+    PPunto paux1,paux2;
+    
+    paux1=p;
+    while(1){
+        
+        paux2=paux1->pp;
+        eliminaPunto(paux1);
+        paux1=paux2;
+        
+        if(paux1==NULL)break;
+        
+    }
+    
+    
 }
 
 int eliminaPunto(PPunto p) {
