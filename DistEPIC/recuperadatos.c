@@ -11,7 +11,7 @@ PPunto creaPunto(double lat, double lon, int id, int anno);
 
 void insertaPunto(PPunto pori, PPunto pai);
 
-void liberaMemoria(PPunto p);
+extern void liberaMemoria(PPunto p);
 
 int eliminaPunto(PPunto p);
 
@@ -34,18 +34,20 @@ PPunto recuperaDatos(char * snomarch) {
     if (fp != NULL) {
         char line [ 128 ];
         while (fgets(line, sizeof line, fp) != NULL) {
-            if (proot != NULL) {
-
-
-                paux = parserLine(line);
+            
+            paux = parserLine(line);
+            printf("%f::%f::%d::%i\n", paux->lat, paux->lon, paux->id, paux->anno);
+            
+            if (proot != NULL) {               
                 if (pact != NULL) {
-
+                    insertaPunto(pact, paux);
+                    pact = paux;
                 }
-                printf("%f::%f::%d::%i\n", paux->lat, paux->lon, paux->id, paux->anno);
+                
             } else {
-                proot = parserLine(line);
+                proot = paux;
                 pact = proot;
-                printf("%f::%f::%d::%i\n", proot->lat, proot->lon, proot->id, proot->anno);
+                
             }
 
         }
@@ -92,21 +94,21 @@ void insertaPunto(PPunto pori, PPunto pai) {
 
 }
 
-void liberaMemoria(PPunto p){
-    PPunto paux1,paux2;
-    
-    paux1=p;
-    while(1){
-        
-        paux2=paux1->pp;
+void liberaMemoria(PPunto p) {
+    PPunto paux1, paux2;
+
+    paux1 = p;
+    while (1) {
+
+        paux2 = paux1->pp;
         eliminaPunto(paux1);
-        paux1=paux2;
-        
-        if(paux1==NULL)break;
-        
+        paux1 = paux2;
+
+        if (paux1 == NULL)break;
+
     }
-    
-    
+
+
 }
 
 int eliminaPunto(PPunto p) {

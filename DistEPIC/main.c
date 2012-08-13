@@ -9,17 +9,20 @@
 #include <stdlib.h>
 #include <math.h>
 
-
+#include "definiciones.h"
 
 /*
  * 
  */
 int main(int argc, char** argv) {
 
+    PPunto p = NULL;
 
+
+    p = recuperaDatos(*(argv + 1));
+    calculaMinD(p, atoi(*(argv + 2)), atoi(*(argv + 3)));
+    liberaMemoria(p);
     
-    recuperaDatos(*(argv+1));
-    calculaMinD();
     
     return 0;
 }

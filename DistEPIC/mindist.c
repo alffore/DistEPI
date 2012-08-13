@@ -3,6 +3,9 @@
 
 extern int calculaMinD(PPunto pr,int anno, int annoa);
 
+double distaAcum(PPunto p,int anno);
+double cantidadR(PPunto p, int anno);
+
 /**
  * 
  * @param anno
@@ -21,6 +24,7 @@ int calculaMinD(PPunto pr,int anno, int annoa){
             
             
             if(paux->pp==NULL)break;
+            paux=paux->pp;
         }
         
         
@@ -31,4 +35,20 @@ int calculaMinD(PPunto pr,int anno, int annoa){
     
     
     return 1;
+}
+
+
+double distaAcum(PPunto p,int anno){
+    
+    double aux=0;
+    PPunto paux=p;
+    int id=p->id;
+    
+    
+    
+   return aux; 
+}
+
+double cantidadR(PPunto p, int anno){
+    
 }
