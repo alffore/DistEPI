@@ -11,6 +11,11 @@
 
 #include "definiciones.h"
 
+extern PPunto recuperaDatos(char * snomarch);
+extern int calculaMinD(PPunto pr, int anno, int annoa);
+extern void liberaMemoria(PPunto p);
+
+
 /*
  * 
  */
