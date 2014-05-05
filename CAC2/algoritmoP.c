@@ -21,7 +21,7 @@ extern PLocalidad PLr;
 extern double RT;
 
 /**
- * 
+ * @brief Esta funcion calcula la distancia entre una localidad y un recurso
  * @return 
  */
 int calculoSD(void) {
@@ -31,7 +31,7 @@ int calculoSD(void) {
 
     int t;
     PRecurso pr = PRr;
-    PRecurso prmin = PRr;
+    PRecurso prmin = NULL;
 
     PLocalidad ploc = PLr;
     double dist, daux;
@@ -41,11 +41,13 @@ int calculoSD(void) {
         for (t = 0; t < tam_tipos; t++) {
 
             pr = PRr;
-            prmin = PRr;
+            prmin = NULL;
             dist = M_PI*RT;
             daux=dist;
             while (pr != NULL) {
              
+//printf("busca: %s  es %s\n",tipoi[t],pr->stipo_infra);
+
                 if (strcmp(tipoi[t], pr->stipo_infra) == 0) {
 
                     daux = distLR(ploc, pr);
@@ -65,5 +67,5 @@ int calculoSD(void) {
         ploc = ploc->Pnext;
     }
 
-
+    return 1;
 }

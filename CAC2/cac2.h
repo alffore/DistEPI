@@ -1,6 +1,6 @@
 /* 
- * File:   cac2.h
- * Author: alfonso
+ * @file  cac2.h
+ * @author AAFR
  *
  * Created on November 19, 2012, 1:39 PM
  */
@@ -33,6 +33,7 @@ extern "C" {
     typedef Recurso * PRecurso;
 
     /**
+     * 
      */
     typedef struct Localidad {
         int estado_id;
@@ -53,6 +54,7 @@ extern "C" {
 
 
     /**
+     * 
      */
     static char *tipoi[8] = {
         "museo",

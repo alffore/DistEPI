@@ -5,8 +5,8 @@
  * @brief Código que recuera la información de los recursos, crea un cola de ellos
  * @author AAFR
  */
-#include "cac2.h"
 
+#include "cac2.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,7 +24,7 @@ PRecurso PRr = NULL;
 int cuentaRec;
 
 /**
- * 
+ * @brief Función que recupera los recursos 
  * @param sarchivo
  * @return 
  */
@@ -35,21 +35,21 @@ int recuperaInfoRC(char * sarchivo) {
 
     int id, edo_id, mun_id, loc_id;
     double lat, lon;
-    char stipo[11];
+    char stipo[20];
 
     FILE *fh = fopen(sarchivo, "r");
-    while(!feof(fh)) {
-        if(fscanf(fh, "%d %d %d %lf %lf %s %d",&edo_id, &mun_id, &loc_id, &lat, &lon, stipo,&id) != 7) break;
-
+    while (!feof(fh)) {
+        if (fscanf(fh, "%d %d %d %lf %lf %s %d", &edo_id, &mun_id, &loc_id, &lat, &lon, stipo, &id) != 7) break;
+//printf("RECUPERADO: %d %d %d %lf %lf %s %d\n",edo_id, mun_id, loc_id, lat, lon, stipo, id);
         if (pr == NULL && PRr == NULL) {
             PRr = creaR(id, edo_id, mun_id, loc_id, lat, lon, stipo);
             pr = PRr;
         } else {
             pr = insertaR(pr, id, edo_id, mun_id, loc_id, lat, lon, stipo);
-        }     
+        }
 
     }
-    //printf("cuentaRec: %d\n",cuentaRec);
+    printf("cuentaRec: %d\n", cuentaRec);
     fclose(fh);
     return cuentaRec;
 }
@@ -86,21 +86,21 @@ PRecurso insertaR(PRecurso pr, int id, int estado_id, int municipio_id, int loca
  */
 PRecurso creaR(int id, int estado_id, int municipio_id, int localidad_id, double lat, double lon, char * stipo) {
 
-    PRecurso pr = (PRecurso) calloc(1, sizeof (Recurso));
+    PRecurso pr = (PRecurso) malloc(sizeof (Recurso));
     cuentaRec++;
     pr->id = id;
     pr->estado_id = estado_id;
     pr->municipio_id = municipio_id;
     pr->localidad_id = localidad_id;
 
-    pr->lat = M_PI*lat/180.0;
-    pr->lon = M_PI*lon/180.0;
+    pr->lat = M_PI * lat / 180.0;
+    pr->lon = M_PI * lon / 180.0;
 
-    pr->stipo_infra =malloc(strlen(stipo)*sizeof(char));
-    strcpy(pr->stipo_infra,stipo);
+    pr->stipo_infra = malloc(strlen(stipo) * sizeof (char));
+    strcpy(pr->stipo_infra, stipo);
 
-    pr->Pnext=NULL;
-    
+    pr->Pnext = NULL;
+
     return pr;
 
 
@@ -114,7 +114,7 @@ void liberaR(PRecurso pr) {
 
     if (pr != NULL) {
         free(pr->stipo_infra);
-        
+
         liberaR(pr->Pnext);
         cuentaRec--;
         free(pr);

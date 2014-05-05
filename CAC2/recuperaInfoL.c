@@ -1,10 +1,9 @@
 /**
- * 
  * @file recuperaInfoL.c
  * @author AAFR
  */
-#include "cac2.h"
 
+#include "cac2.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -40,17 +39,19 @@ int recuperaInfoLoc(char * sarchivo) {
 
     while (!feof(fh)) {
         if (fscanf(fh, "%d %d %d %lf %lf %d", &edo_id, &mun_id, &loc_id, &lat, &lon, &pob) != 6) break;
+        //printf("%lf %d\n",lat,pob);
 
         if (pr == NULL && PLr == NULL) {
             PLr = creaL(edo_id, mun_id, loc_id, lat, lon, pob);
             pr = PLr;
         } else {
-           pr = insertaL(pr, edo_id, mun_id, loc_id, lat, lon, pob);
+            pr = insertaL(pr, edo_id, mun_id, loc_id, lat, lon, pob);
         }
-        
-        //printf("%lf %d\n",lat,pob);
+
+
+
     }
-//printf("cuentaLoc: %d\n",cuentaLoc);
+    printf("cuentaLoc: %d\n", cuentaLoc);
     fclose(fh);
     return cuentaLoc;
 }
@@ -86,14 +87,14 @@ PLocalidad insertaL(PLocalidad pl, int estado_id, int municipio_id, int localida
  */
 PLocalidad creaL(int estado_id, int municipio_id, int localidad_id, double lat, double lon, int pob) {
 
-    PLocalidad pr = (PLocalidad) calloc(1, sizeof (Localidad));
+    PLocalidad pr = (PLocalidad) malloc(sizeof (Localidad));
     cuentaLoc++;
     pr->estado_id = estado_id;
     pr->municipio_id = municipio_id;
     pr->localidad_id = localidad_id;
 
-    pr->lat = M_PI*lat/180.0;
-    pr->lon = M_PI*lon/180.0;
+    pr->lat = M_PI * lat / 180.0;
+    pr->lon = M_PI * lon / 180.0;
 
     pr->poblacion = pob;
 

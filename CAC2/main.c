@@ -1,9 +1,10 @@
 /* 
- * File:   main.c
- * Author: AAFR
+ * @file  main.c
+ * @author AAFR
  *
  * Created on November 19, 2012, 1:36 PM
  */
+
 #include "cac2.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,18 +31,25 @@ extern PLocalidad PLr;
  * 
  */
 int main(int argc, char** argv) {
-    int i = 0;
+/*    int i = 0;*/
 
     if (argc > 2) {
+/*
         for (i = 0; i < argc; i++) {
-            //printf("%ṣ\n", *(argv + i));
+            printf("%ṣ\n", *(argv + i));
         }
+*/
 
-        recuperaInfoRC(*(argv + 2));
+
+        
+        printf("%s\n",*(argv + 1));
         recuperaInfoLoc(*(argv + 1));
         
+        printf("%s\n",*(argv + 2));
+        recuperaInfoRC(*(argv + 2));
         
-        abreArchivoSSQL("./salida_cac2.sql");
+        
+        abreArchivoSSQL("salida_cac2.sql");
         calculoSD();
         cierraArchivoSSQL();
 
@@ -49,6 +57,7 @@ int main(int argc, char** argv) {
         
         liberaL(PLr);
         liberaR(PRr);
+
       
     } else {
         fprintf(stderr, "cac2  <archivo_localidades> <archivo_recursos>\n");

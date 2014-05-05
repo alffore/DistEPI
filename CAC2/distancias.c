@@ -4,8 +4,8 @@
  * @author AAFR
  * 
  */
-#include "cac2.h"
 
+#include "cac2.h"
 #include <math.h>
 
 
@@ -38,6 +38,9 @@ double dist(Recurso p1, Recurso p2){
 }
 
 /**
+ * @brief Función que calcula la distancia geodesica entre una localidad y un recurso cultural
+ * 
+ * 
  * 
  * @param ploc
  * @param prec

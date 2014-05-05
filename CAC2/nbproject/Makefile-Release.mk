@@ -45,7 +45,7 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-m64
 
 # CC Compiler Flags
 CCFLAGS=
@@ -71,37 +71,37 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cac2: ${OBJECTFILES}
 ${OBJECTDIR}/algoritmoP.o: algoritmoP.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/algoritmoP.o algoritmoP.c
+	$(COMPILE.c) -O2 -Wall -std=c89 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/algoritmoP.o algoritmoP.c
 
 ${OBJECTDIR}/distancias.o: distancias.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/distancias.o distancias.c
+	$(COMPILE.c) -O2 -Wall -std=c89 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/distancias.o distancias.c
 
 ${OBJECTDIR}/lectorint.o: lectorint.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/lectorint.o lectorint.c
+	$(COMPILE.c) -O2 -Wall -std=c89 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/lectorint.o lectorint.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+	$(COMPILE.c) -O2 -Wall -std=c89 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
 
 ${OBJECTDIR}/recuperaInfoL.o: recuperaInfoL.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/recuperaInfoL.o recuperaInfoL.c
+	$(COMPILE.c) -O2 -Wall -std=c89 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/recuperaInfoL.o recuperaInfoL.c
 
 ${OBJECTDIR}/recuperaInfoR.o: recuperaInfoR.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/recuperaInfoR.o recuperaInfoR.c
+	$(COMPILE.c) -O2 -Wall -std=c89 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/recuperaInfoR.o recuperaInfoR.c
 
 ${OBJECTDIR}/salidas.o: salidas.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/salidas.o salidas.c
+	$(COMPILE.c) -O2 -Wall -std=c89 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/salidas.o salidas.c
 
 # Subprojects
 .build-subprojects:
