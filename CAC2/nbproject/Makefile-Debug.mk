@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
+CND_PLATFORM=GNU-MacOSX
+CND_DLIB_EXT=dylib
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,12 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/recuperaInfoL.o \
-	${OBJECTDIR}/lectorint.o \
 	${OBJECTDIR}/algoritmoP.o \
 	${OBJECTDIR}/distancias.o \
-	${OBJECTDIR}/recuperaInfoR.o \
+	${OBJECTDIR}/lectorint.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/recuperaInfoL.o \
+	${OBJECTDIR}/recuperaInfoR.o \
 	${OBJECTDIR}/salidas.o
 
 
@@ -66,42 +66,42 @@ LDLIBSOPTIONS=-lm
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cac2: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cac2 ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/recuperaInfoL.o: recuperaInfoL.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/recuperaInfoL.o recuperaInfoL.c
-
-${OBJECTDIR}/lectorint.o: lectorint.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/lectorint.o lectorint.c
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cac2 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/algoritmoP.o: algoritmoP.c 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/algoritmoP.o algoritmoP.c
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/algoritmoP.o algoritmoP.c
 
 ${OBJECTDIR}/distancias.o: distancias.c 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/distancias.o distancias.c
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/distancias.o distancias.c
 
-${OBJECTDIR}/recuperaInfoR.o: recuperaInfoR.c 
+${OBJECTDIR}/lectorint.o: lectorint.c 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/recuperaInfoR.o recuperaInfoR.c
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/lectorint.o lectorint.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/recuperaInfoL.o: recuperaInfoL.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/recuperaInfoL.o recuperaInfoL.c
+
+${OBJECTDIR}/recuperaInfoR.o: recuperaInfoR.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/recuperaInfoR.o recuperaInfoR.c
 
 ${OBJECTDIR}/salidas.o: salidas.c 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/salidas.o salidas.c
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/salidas.o salidas.c
 
 # Subprojects
 .build-subprojects:

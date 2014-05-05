@@ -54,15 +54,15 @@ extern "C" {
 
     /**
      */
-    static char *tipoi[6] = {
-        /*"museo"*/
-         "museo_his"
-        , "museo_ant"
-        , "museo_art"
-        /* , "museo_arq" */
-        , "museo_cyt"
-        , "museo_esp"
-        , "ND"
+    static char *tipoi[8] = {
+        "museo",
+        "teatro",
+        "auditorio",
+        "galeria",
+        "libreria",
+        "zona_arqueologica",
+        "biblioteca",
+        "centro_cultural"
     };
 
 #ifdef	__cplusplus
