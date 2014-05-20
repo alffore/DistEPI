@@ -1,6 +1,6 @@
 /* 
  * File:   cac2.h
- * Author: alfonso
+ * Author: AAFR
  *
  * Created on November 19, 2012, 1:39 PM
  */
@@ -54,7 +54,7 @@ extern "C" {
 
     /**
      */
-    static char *tipoi[8] = {
+    static char **tipoi = {
         "museo",
         "teatro",
         "auditorio",
@@ -62,7 +62,11 @@ extern "C" {
         "libreria",
         "zona_arqueologica",
         "biblioteca",
-        "centro_cultural"
+        "centro_cultural",
+        "fonoteca",
+        "fototeca",
+        "universidad",
+        "otra_bib"
     };
 
 #ifdef	__cplusplus
